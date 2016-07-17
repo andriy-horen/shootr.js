@@ -9,9 +9,9 @@ import { Animation } from './animation';
 
 export class Enemy extends Entity {
 	private _animations : Map<Animation> = {
-	    'idle' : new Animation(new Frame(1, 2, new Sprite({ x: 0, y: 0 }, 36, 36 ))),
-	    'right' : new Animation(new Frame(4, 2, new Sprite({ x: 0, y: 0 }, 36, 36 ))), 
-	    'left' : new Animation(new Frame(4, 3, new Sprite({ x: 0, y: 0 }, 36, 36 ))) 
+	    'idle' : new Animation(new Frame(1, 0, new Sprite({ x: 0, y: 0 }, 36, 36 ))),
+	    'right' : new Animation(new Frame(4, 0, new Sprite({ x: 0, y: 0 }, 36, 36 ))), 
+	    'left' : new Animation(new Frame(4, 1, new Sprite({ x: 0, y: 0 }, 36, 36 ))) 
     };
 
     public currentAnimation : Animation;

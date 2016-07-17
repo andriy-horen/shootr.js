@@ -19,9 +19,9 @@ export class Renderer {
 	 *	Please check his github repo: https://github.com/cshepp/candyjam/
 	 */
 	private _resources = {
-		'player' : 'https://raw.githubusercontent.com/cshepp/candyjam/master/assets/spritesheets/player.png',
-		'enemy' : 'https://raw.githubusercontent.com/cshepp/candyjam/master/assets/spritesheets/player.png',
-		'bullet' : 'https://raw.githubusercontent.com/cshepp/candyjam/master/assets/images/bullet.png'
+		'player' : './img/player.png',
+		'enemy' : './img/enemy.png',
+		'bullet' : './img/bullet.png'
 	}
 
 	constructor(gameInstance: Game) {

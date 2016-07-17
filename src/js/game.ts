@@ -85,7 +85,7 @@ export class Game {
 
 var game = new Game({
 	container: '.game',
-	showAABB: true
+	showAABB: false
 });
 
 game.run();
