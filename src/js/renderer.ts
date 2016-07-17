@@ -13,6 +13,11 @@ export class Renderer {
 		height: 30
 	}
 
+
+	/**
+	 *	Sprites I use for a development were created by Cody Shepp for his game Dental Defender: Saga of the Candy Horde.
+	 *	Please check his github repo: https://github.com/cshepp/candyjam/
+	 */
 	private _resources = {
 		'player' : 'https://raw.githubusercontent.com/cshepp/candyjam/master/assets/spritesheets/player.png',
 		'enemy' : 'https://raw.githubusercontent.com/cshepp/candyjam/master/assets/spritesheets/player.png',
