@@ -3,8 +3,9 @@
 
 ## Installation
 
-1. Clone this repository `https://github.com/andriy-horen/shootr.js.git`
-2. Run `cd shootr.js && npm start`
+1. Clone this repository `git clone https://github.com/andriy-horen/shootr.js.git`
+2. Open repository `cd shootr.js`
+3. Run `npm install` followed by `npm start`
 
 ## Demo
 
