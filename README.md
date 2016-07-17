@@ -1,6 +1,16 @@
-# shootr.js
-## HTML5 shooter written in TypeScript
+# shootr.js - HTML5 game 
+2D shooter written in TypeScript
 
-__Note__: This game is still being developed. I will be updating Demo page as soon as I have something new.
+## Installation
 
-Play it here [DEMO](https://andriy-horen.github.io/shootr.js).
+1. Clone this repository `https://github.com/andriy-horen/shootr.js.git`
+2. Run `cd shootr.js && npm start`
+
+## Demo
+
+Play it here [DEMO](https://andriy-horen.github.io/shootr.js)
+
+## Credits
+
+For development I use spritesheets from _Dental Defender: Saga of the Candy Horde_ game written by [Cody Shepp](https://github.com/cshepp/candyjam/)
+
