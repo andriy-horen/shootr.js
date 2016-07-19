@@ -9,10 +9,10 @@ export class Physics {
      * @return {bool} True if they intersect, otherwise false
      */
     static intersects(body1: Body, body2: Body) : boolean {
-        var intersectionX = body1.position.x < body2.position.x + body2.width 
+        let intersectionX = body1.position.x < body2.position.x + body2.width 
         				 && body1.position.x + body1.width > body2.position.x;
         
-        var intersectionY = body1.position.y < body2.position.y + body2.height 
+        let intersectionY = body1.position.y < body2.position.y + body2.height 
         				 && body1.position.y + body1.height > body2.position.y;
 
         return intersectionX && intersectionY;

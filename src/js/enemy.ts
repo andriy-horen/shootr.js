@@ -33,14 +33,14 @@ export class Enemy extends Entity {
 	}
 
 	moveTowards(position: Point) : void {
-        var dx = Math.abs(position.x - this.body.position.x);
-        var dy = Math.abs(position.y - this.body.position.y);
+        let dx = Math.abs(position.x - this.body.position.x);
+        let dy = Math.abs(position.y - this.body.position.y);
 
-        var dirX = position.x - this.body.position.x > 0 ? 1 : -1;
-        var dirY = position.y - this.body.position.y > 0 ? 1 : -1;
+        let dirX = position.x - this.body.position.x > 0 ? 1 : -1;
+        let dirY = position.y - this.body.position.y > 0 ? 1 : -1;
 
-        var velX = dx * (this.speed / (dx + dy)) * dirX;
-        var velY = dy * (this.speed / (dx + dy)) * dirY;
+        let velX = dx * (this.speed / (dx + dy)) * dirX;
+        let velY = dy * (this.speed / (dx + dy)) * dirY;
 
         this.body.position.x += velX;
         this.body.position.y += velY;

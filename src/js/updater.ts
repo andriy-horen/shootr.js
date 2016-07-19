@@ -17,13 +17,13 @@ export class Updater {
 	}
 
 	private updateAnimations() : void {
-		var entities = this.allEntities();
+		let entities = this.allEntities();
 
 		entities.forEach((e)=> { e.currentAnimation.update(this._game.gameTime); });
 	}
 
 	private updateEntities() : void {
-		var entities = this.allEntities();
+		let entities = this.allEntities();
 
 		entities.forEach(e => { e.update(); });
 	}
@@ -35,7 +35,7 @@ export class Updater {
 
 	private removeDead(e: Entity, collection: Entity[]) {
 		if (e.alive === false) {
-			var eIndex = collection.indexOf(e);
+			let eIndex = collection.indexOf(e);
 
 			if (eIndex > -1) {
 				collection.splice(eIndex, 1);

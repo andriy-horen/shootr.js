@@ -24,14 +24,14 @@ export class Bullet extends Entity {
 	}
 
 	private setVelocity(position: Point) : void {
-        var dx = Math.abs(position.x - this.body.position.x);
-        var dy = Math.abs(position.y - this.body.position.y);
+        let dx = Math.abs(position.x - this.body.position.x);
+        let dy = Math.abs(position.y - this.body.position.y);
 
-        var dirX = position.x - this.body.position.x > 0 ? 1 : -1;
-        var dirY = position.y - this.body.position.y > 0 ? 1 : -1;
+        let dirX = position.x - this.body.position.x > 0 ? 1 : -1;
+        let dirY = position.y - this.body.position.y > 0 ? 1 : -1;
 
-        var x = dx * (this.speed / (dx + dy)) * dirX;
-        var y = dy * (this.speed / (dx + dy)) * dirY;
+        let x = dx * (this.speed / (dx + dy)) * dirX;
+        let y = dy * (this.speed / (dx + dy)) * dirY;
 
         this.body.velocity = { x, y };
 	}

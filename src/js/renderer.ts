@@ -36,14 +36,14 @@ export class Renderer {
     }
 
     private renderTiles() : void {
-        var colors = ["#785c98", "#694f88"];
+        let colors = ["#785c98", "#694f88"];
 
-        for (var x = 0; x < this._game.map.width; x += this._tile.width) {
-            for (var y = 0; y < this._game.map.height; y += this._tile.height) {
-                var xIndex = (x / this._tile.width) % 2;
-                var yIndex = (y / this._tile.height) % 2;
+        for (let x = 0; x < this._game.map.width; x += this._tile.width) {
+            for (let y = 0; y < this._game.map.height; y += this._tile.height) {
+                let xIndex = (x / this._tile.width) % 2;
+                let yIndex = (y / this._tile.height) % 2;
 
-                var tilePos = this.cameraOffset({x, y});
+                let tilePos = this.cameraOffset({x, y});
 
                 this.renderTile(tilePos, colors[xIndex ^ yIndex]);
             }
@@ -51,7 +51,7 @@ export class Renderer {
     }
 
     private cameraOffset(pos: Point) : Point {
-        var self = this;
+        let self = this;
 
         return {
             x: pos.x - self._game.viewport.position.x,
@@ -64,8 +64,8 @@ export class Renderer {
 		img.src = source;
 
 		collection.forEach((e) => {
-			var frame = e.currentAnimation.currentFrame;
-			var pos = this.cameraOffset(e.body.position);
+			let frame = e.currentAnimation.currentFrame;
+			let pos = this.cameraOffset(e.body.position);
 
 			if (this._game.config.showAABB) {
 				this.renderAABB(new Body(pos, e.body.width, e.body.height));
@@ -83,7 +83,7 @@ export class Renderer {
 	}
 
 	private renderAABB(body: Body) {
-		var ctx = this._game.context;
+		let ctx = this._game.context;
 
 		ctx.beginPath();
 		ctx.translate(0.5, 0.5);

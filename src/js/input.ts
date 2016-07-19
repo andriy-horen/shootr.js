@@ -103,7 +103,7 @@ export class Input {
 
 	// TODO : Needs better implementation
 	private getMousePosition(e: MouseEvent) { 
-		var canvasOffset = this._game.canvas.getBoundingClientRect();
+		let canvasOffset = this._game.canvas.getBoundingClientRect();
 
 		this._mousePos = {
 	      x: e.clientX - canvasOffset.left,

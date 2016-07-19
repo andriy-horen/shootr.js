@@ -83,7 +83,7 @@ export class Game {
 	}
 }
 
-var game = new Game({
+let game = new Game({
 	container: '.game',
 	showAABB: false
 });

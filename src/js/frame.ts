@@ -9,7 +9,7 @@ export class Frame {
 	name : string;
 
 	static create(x: number, y: number, width: number, height: number): Frame {
-		var frame = new Frame();
+		let frame = new Frame();
 
 		frame.x = x;
 		frame.y = y;

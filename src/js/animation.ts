@@ -37,7 +37,7 @@ export class Animation {
 		return Const.MS_IN_SEC / this.speed;
 	}
 
-	next() {
+	next(): void {
 		let index = this.currentFrame.index;
 
 		index = (index + 1) % this._length;
@@ -45,7 +45,7 @@ export class Animation {
 		this.currentFrame.x = index * this.currentFrame.width;
 	}
 
-	update(gameTime: Date) {
+	update(gameTime: Date): void {
 		if (this.canAnimate(gameTime)) {
 			this._lastAnimated = gameTime;
 
@@ -53,7 +53,7 @@ export class Animation {
 		}
 	}
 
-	reset() {
+	reset(): void {
 		this._lastAnimated = new Date(0);
 		this.currentFrame.index = 0;
 		this.currentFrame.x = 0;
