@@ -1,27 +1,22 @@
 import { Sprite } from './sprite';
 
 export class Frame {
-	public index : number = 0;
-	public sprite : Sprite;
+	index : number = 0;
+	x: number = 0;
+	y: number = 0;
+	width: number = 0;
+	height: number = 0;
+	name : string;
 
-	private _length : number;
-	private _row : number;
+	static create(x: number, y: number, width: number, height: number): Frame {
+		var frame = new Frame();
 
-	constructor(length : number, row : number, sprite : Sprite) {
-		this._length = length;
-		this.sprite = sprite;
+		frame.x = x;
+		frame.y = y;
+		frame.width = width;
+		frame.height = height;
+		frame.name = name;
 
-		this.sprite.offset.y = this.sprite.height * row;
-	}
-
-	next() {
-		this.index = (this.index + 1) % this._length;
-
-		this.sprite.offset.x = this.sprite.width * this.index;
-	}
-
-	reset() {
-		this.index = 0;
-		this.sprite.offset = { x : 0, y : 0};
+		return frame;
 	}
 }

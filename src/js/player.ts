@@ -9,7 +9,7 @@ import { Sprite } from './sprite';
 import { Animation } from './animation';
 import { GenericMap as Map } from './collections';
 import { Util } from './util';
- 
+
 export class Player extends Entity {
 	private _game : Game;
 	private _lastShot : Date = new Date(0);
@@ -20,15 +20,15 @@ export class Player extends Entity {
 
 	public currentAnimation : Animation;
 	private _animations : Map<Animation> = {
-	    'idle' : new Animation(new Frame(1, 0, new Sprite({x: 0, y: 0}, 36, 36))),
-	    'right' : new Animation(new Frame(4, 0, new Sprite({x: 0, y: 0}, 36, 36))),
-	    'left' : new Animation(new Frame(4, 1, new Sprite({x: 0, y: 0}, 36, 36)))
+	    'idle' : new Animation(1, 0, Frame.create(0, 0, 36, 36)),
+	    'right' : new Animation(4, 0, Frame.create(0, 0, 36, 36)),
+	    'left' : new Animation(4, 1, Frame.create(0, 0, 36, 36))
 	};
-	private _bulletOffset : Point = { x: 12, y: 18 }; 
+	private _bulletOffset : Point = { x: 12, y: 18 };
 
 	constructor(gameInstance: Game) {
 		super();
-		
+
 		this._game = gameInstance;
 
         this.animate('idle');
@@ -44,7 +44,7 @@ export class Player extends Entity {
 		}
 	}
 
-	private canShoot() : boolean { 
+	private canShoot() : boolean {
 		let diff = this._game.gameTime.getTime() - this._lastShot.getTime();
 
 		return diff > this.attackSpeed;
@@ -52,7 +52,7 @@ export class Player extends Entity {
 
 	animate(animation : string): void {
 		this.currentAnimation = this._animations[animation];
-		this.currentAnimation.speed = 100;
+		this.currentAnimation.speed = 10;
 	}
 
 	upateMovement() : void {
@@ -66,13 +66,13 @@ export class Player extends Entity {
 			this.body.position.x += this.speed;
 			this.animate('right');
 		}
-        
-        if (input.actions[Action.Up]) {
+
+    if (input.actions[Action.Up]) {
 
 			this.body.position.y -= this.speed;
 
 		} else if (input.actions[Action.Down]) {
-			
+
 			this.body.position.y += this.speed;
 		}
 

@@ -8,7 +8,7 @@ import { Body } from './body';
 export class Renderer {
 	private _game : Game;
 
-	private _tile = { 
+	private _tile = {
 		width : 30,
 		height: 30
 	}
@@ -53,7 +53,7 @@ export class Renderer {
     private cameraOffset(pos: Point) : Point {
         var self = this;
 
-        return { 
+        return {
             x: pos.x - self._game.viewport.position.x,
             y: pos.y - self._game.viewport.position.y
         };
@@ -63,20 +63,20 @@ export class Renderer {
 		let img = document.createElement('img');
 		img.src = source;
 
-		collection.forEach((e) => { 
-			var sprite = e.currentAnimation.currentFrame.sprite;
+		collection.forEach((e) => {
+			var frame = e.currentAnimation.currentFrame;
 			var pos = this.cameraOffset(e.body.position);
 
 			if (this._game.config.showAABB) {
 				this.renderAABB(new Body(pos, e.body.width, e.body.height));
 			}
-			
+
 			this._game.context.drawImage(
-				img, 
-				sprite.offset.x, sprite.offset.y, 
-				sprite.width, sprite.height, 
-				pos.x, pos.y, 
-				sprite.width, sprite.height
+				img,
+				frame.x, frame.y,
+				frame.width, frame.height,
+				pos.x, pos.y,
+				frame.width, frame.height
 			);
 
 		});
@@ -84,13 +84,13 @@ export class Renderer {
 
 	private renderAABB(body: Body) {
 		var ctx = this._game.context;
-		
+
 		ctx.beginPath();
 		ctx.translate(0.5, 0.5);
 		ctx.rect(
-			body.position.x, 
-			body.position.y, 
-			body.width, 
+			body.position.x,
+			body.position.y,
+			body.width,
 			body.height
 		);
 
