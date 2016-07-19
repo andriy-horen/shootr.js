@@ -55,33 +55,32 @@ export class Player extends Entity {
 		this.currentAnimation.speed = 100;
 	}
 
-	upateMovement() : void {
+	private upateMovement() : void {
 		let input = this._game.input;
 
 		if (input.actions[Action.Left]) {
 			this.body.position.x -= this.speed;
-			this.animate('left');
-
 		} else if (input.actions[Action.Right]) {
 			this.body.position.x += this.speed;
-			this.animate('right');
 		}
-        
         if (input.actions[Action.Up]) {
-
 			this.body.position.y -= this.speed;
-
 		} else if (input.actions[Action.Down]) {
-			
 			this.body.position.y += this.speed;
 		}
-
 		if (input.actions[Action.Attack]) {
 	        this.shoot();
 		}
 	}
 
+	private updateAnimation() {
+		let animation = this._game.mouse.x > this.body.position.x ? 'right' : 'left';
+
+		this.animate(animation);
+	}
+
 	update() : void {
 		this.upateMovement();
+		this.updateAnimation();
 	}
 }

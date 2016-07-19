@@ -31,7 +31,7 @@ export class Game {
 	public renderer: Renderer;
 	public updater: Updater;
 	public collisions: CollisionManager;
-	public mouse: Point;
+	public mouse: Point = { x: 0, y: 0 };
 	/**
 	 * RequestAnimationFrame unique ID; used to cancel RAF-loop
 	 * @type {number}
