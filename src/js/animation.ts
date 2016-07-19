@@ -1,31 +1,61 @@
 import { Frame } from './frame';
+import * as Const from './const';
 
 export class Animation {
 	public currentFrame : Frame;
+
+	/**
+	 * Number of frames per second
+	 * @type {number}
+	 */
 	public speed : number = 0;
+	/** !NOT IMPLEMETED YET!
+	 * Set to true to make animation looped, false - for one cycle only
+	 * @type {boolean}
+	 */
+	public loop: boolean = true;
 
 	private _lastAnimated : Date = new Date(0);
+	private _row : number;
+	private _length : number;
 
-	constructor(frame : Frame) {
+	constructor(length: number, row: number, frame: Frame) {
+		this._row = row;
+		this._length = length;
+
 		this.currentFrame = frame;
+		this.currentFrame.y = this._row * this.currentFrame.height;
 	}
 
 	canAnimate(time : Date) : boolean {
-		var diff = time.getTime() - this._lastAnimated.getTime();
+		let animationDelta = time.getTime() - this._lastAnimated.getTime();
 
-		return diff > this.speed;
+		return animationDelta > this.delay;
+	}
+
+	get delay(): number {
+		return Const.MS_IN_SEC / this.speed;
+	}
+
+	next() {
+		let index = this.currentFrame.index;
+
+		index = (index + 1) % this._length;
+		this.currentFrame.index = index;
+		this.currentFrame.x = index * this.currentFrame.width;
 	}
 
 	update(gameTime: Date) {
 		if (this.canAnimate(gameTime)) {
 			this._lastAnimated = gameTime;
 
-			this.currentFrame.next();
+			this.next();
 		}
 	}
 
 	reset() {
 		this._lastAnimated = new Date(0);
-		this.currentFrame.reset();
+		this.currentFrame.index = 0;
+		this.currentFrame.x = 0;
 	}
-} 
+}
