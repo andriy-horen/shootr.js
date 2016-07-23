@@ -1,4 +1,4 @@
-import { Point } from './point'; 
+import { Point } from './primitives'; 
 
 export class Sprite {
 	offset : Point = { x: 0, y: 0 };

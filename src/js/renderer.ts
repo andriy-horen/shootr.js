@@ -1,7 +1,7 @@
 import { Game, Config } from './game';
 import { Viewport } from './viewport';
 import { Map } from './map';
-import { Point } from './point';
+import { Point, Vector } from './primitives';
 import { Entity } from './entity';
 import { Body } from './body';
 
@@ -68,7 +68,7 @@ export class Renderer {
 			let pos = this.cameraOffset(e.body.position);
 
 			if (this._game.config.showAABB) {
-				this.renderAABB(new Body(pos, e.body.width, e.body.height));
+				this.renderAABB(new Body(new Vector(pos.x, pos.y), e.body.width, e.body.height));
 			}
 
 			this._game.context.drawImage(

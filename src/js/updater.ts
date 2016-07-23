@@ -47,6 +47,7 @@ export class Updater {
 		this.updateAnimations();
 		this.updateEntities();
 		this.updateDead();
+		this._game.viewport.target = this._game.player.body.position;
 		this._game.viewport.update();
 		this._game.collisions.update();
 		this._game.input.update();

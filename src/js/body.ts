@@ -1,20 +1,37 @@
-import { Point } from './point';
+import { Entity } from './entity';
+import { World } from './world';
+import { Point, Vector } from './primitives';
+import { noop } from './util';
+
+export interface OnCollide {
+	(obj: Entity | World) : void;
+}
 
 export class Body {
-	position : Point;
-	velocity: Point = { x: 0, y: 0 };
-
+	position: Vector = new Vector();
+	velocity: Vector = new Vector();
+	overlap: Vector =  new Vector(); 
+	speed : number;
 	width : number;
 	height : number;
 
-	constructor(position: Point, width: number, height: number) {
+	onCollide: OnCollide;
+	collideWorldBounds: boolean = true;
+
+	constructor(position: Vector, width: number, height: number) {
 		this.position = position;
 		this.width = width;
 		this.height = height;
 	}
 
+	// TODO: Needs to be improved beacause more FPS results in faster movement;
+	private updateMovement():void {
+		this.position = Vector.add(this.position, this.velocity);
+
+		this.speed = Math.hypot(this.velocity.x, this.velocity.y);
+	}
+
 	update() {
-		this.position.x += this.velocity.x;
-		this.position.y += this.velocity.y;
+		this.updateMovement();
 	}
 }

@@ -9,7 +9,8 @@ export class Animation {
 	 * @type {number}
 	 */
 	public speed : number = 0;
-	/** !NOT IMPLEMETED YET!
+	/**
+	 * TODO: Implement, field is not used 
 	 * Set to true to make animation looped, false - for one cycle only
 	 * @type {boolean}
 	 */

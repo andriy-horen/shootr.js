@@ -1,4 +1,6 @@
-import { Point } from './point';
+import { Point } from './primitives';
+
+export function noop() {};
 
 export class Util {
 	static clamp(value : number, min : number, max : number) : number {
@@ -6,12 +8,5 @@ export class Util {
 		if (value < min) { return min; }
 
 		return value;
-	}
-
-	static addPoint(point1: Point, point2: Point) : Point {
-		return {
-			x : point1.x + point2.x,
-			y : point1.y + point2.y
-		}
 	}
 }

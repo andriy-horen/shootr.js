@@ -1,5 +1,5 @@
 import { Game } from './game';
-import { Point } from './point';
+import { Point } from './primitives';
 import { GenericMap as Map } from './collections';
 
 export enum Action { 

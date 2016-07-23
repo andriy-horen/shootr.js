@@ -1,6 +1,6 @@
 import { Game } from './game';
 import { Map } from './map';
-import { Point } from './point';
+import { Point } from './primitives';
 import { Util } from './util';
 
 export class Viewport {

@@ -4,7 +4,7 @@ import { Enemy } from './enemy';
 import { Input } from './input';
 import { Map } from './map';
 import { Player } from './player';
-import { Point } from './point';
+import { Point } from './primitives';
 import { Renderer } from './renderer';
 import { Updater } from './updater'; 
 import { Viewport } from './viewport';
@@ -47,8 +47,6 @@ export class Game {
 		this.map = new Map();
 		this.input = new Input(this);
 		this.viewport = new Viewport(this);
-		this.viewport.target = this.player.body.position;
-
 		this.renderer = new Renderer(this);
 		this.updater = new Updater(this);
 		this.collisions = new CollisionManager(this);
