@@ -82,6 +82,29 @@ export class Renderer {
 		});
 	}
 
+	private renderHpBar(e: Entity) {
+		let barSize = { width: 50, height: 5 };
+		let ctx = this._game.context;
+		let pos = this.cameraOffset(Vector.subtract(e.body.position, new Vector(5, 15)));
+
+		ctx.beginPath();
+		ctx.rect(
+			pos.x,
+			pos.y,
+			barSize.width,
+			barSize.height
+		);
+
+		var grd = ctx.createLinearGradient(pos.x, pos.y, pos.x + barSize.width, pos.y + barSize.height);
+		grd.addColorStop(0, "red");
+		grd.addColorStop(e.health / 100, "red");
+		grd.addColorStop(e.health / 100, "black");
+		grd.addColorStop(1, "black");
+
+		ctx.fillStyle = grd;
+		ctx.fill();
+	}
+
 	private renderAABB(body: Body) {
 		let ctx = this._game.context;
 
@@ -107,6 +130,10 @@ export class Renderer {
 		this.renderHelper(this._resources['bullet'], this._game.bullets);
 		this.renderHelper(this._resources['enemy'], this._game.enemies);
 		this.renderHelper(this._resources['player'], [this._game.player]);
+
+		this._game.enemies.forEach(e => {
+			this.renderHpBar(e);
+		});
 	}
 
 	clear() : void {

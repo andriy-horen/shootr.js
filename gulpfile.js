@@ -27,8 +27,11 @@
     		.pipe(gulp.dest('./dist'));
 	});
 
+	gulp.task('watch', function () {
+		gulp.watch('./src/**/*.ts', ['copy', 'ts']);
+	});
 
 	gulp.task('default', function () {
-		gulp.start('copy', 'ts');
+		gulp.start('copy', 'ts', 'watch');
 	});
 })();
