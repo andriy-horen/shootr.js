@@ -48,4 +48,8 @@ export class Vector {
 	static multiply(vec: Vector, scalar: number) {
 		return new Vector(vec.x * scalar, vec.y * scalar);
 	}
+
+	static from(point: Point) {
+		return new Vector(point.x, point.y);
+	}
 }

@@ -21,7 +21,9 @@ export class Renderer {
 	private _resources = {
 		'player' : './img/player.png',
 		'enemy' : './img/enemy.png',
-		'bullet' : './img/bullet.png'
+		'bullet' : './img/bullet.png',
+		'wall': './img/tree-red-1.png'
+
 	}
 
 	constructor(gameInstance: Game) {
@@ -129,11 +131,12 @@ export class Renderer {
 		this.renderTiles();
 		this.renderHelper(this._resources['bullet'], this._game.bullets);
 		this.renderHelper(this._resources['enemy'], this._game.enemies);
-		this.renderHelper(this._resources['player'], [this._game.player]);
-
 		this._game.enemies.forEach(e => {
 			this.renderHpBar(e);
 		});
+
+		this.renderHelper(this._resources['player'], [this._game.player]);
+		this.renderHelper(this._resources['wall'], this._game.walls);
 	}
 
 	clear() : void {

@@ -1,6 +1,7 @@
 import { Bullet } from './bullet';
 import { CollisionManager } from './collision-manager';
 import { Enemy } from './enemy';
+import { Wall } from './wall';
 import { Input } from './input';
 import { Map } from './map';
 import { Player } from './player';
@@ -22,6 +23,7 @@ export class Game {
 	public player: Player;
 	public bullets: Bullet[] = [];
 	public enemies: Enemy[] = [];
+	public walls: Wall[] = [];
 
 	public gameTime: Date;
 
@@ -51,6 +53,7 @@ export class Game {
 		this.updater = new Updater(this);
 		this.collisions = new CollisionManager(this);
 		this.enemies.push(new Enemy(this.player));
+		this.walls.push(new Wall({ x: 350, y: 20 }));
 	}
 
 	tick() : void {
