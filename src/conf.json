@@ -1,0 +1,14 @@
+{
+    "player": {
+        "speed": 3,
+        "hp": 100,
+        "damage": 10,        
+        "attackSpeed": 150
+    },
+    "enemy": {
+        "speed": 2.5,
+        "hp": 100,
+        "damage": 5,
+        "attackSpeed": 250
+    }
+}
