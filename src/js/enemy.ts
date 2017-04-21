@@ -8,6 +8,8 @@ import { Sprite } from './sprite';
 import { Frame } from './frame';
 import { Animation } from './animation';
 
+import * as Random from './random';
+
 export class Enemy extends Entity {
 	private _animations : Map<Animation> = {
 			'idle' : new Animation(1, 0, Frame.create(0, 0, 36, 36)),
@@ -19,17 +21,22 @@ export class Enemy extends Entity {
 
 
     public currentAnimation : Animation;
-    public speed : number = 3;
+    public speed : number = 2.5;
     public dagameAmount: number = 5;
     public attackSpeed: number = 250;
     public target : Entity;
-    public body : Body = new Body(new Vector(100, 100), 36, 36);
+    public body : Body;
 
 	constructor(gameInstance: Game, target: Entity) {
 		super();
 
         this._game = gameInstance;
         this.target = target;
+
+        let randomX = Random.getRandomInt(0, this._game.canvas.width);
+        let randomY = Random.getRandomInt(0, this._game.canvas.height);
+
+        this.body = new Body(new Vector(randomX, randomY), 36, 36);
 
 		this.animate('right');
 	}
