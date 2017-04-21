@@ -21,7 +21,7 @@ export class Vector {
 	}
 
 	public set(value: number | Vector): void {
-		if (typeof value === "number") {
+		if (typeof value === 'number') {
 			this.x = this.y = value;
 		} else {
 			this.x = value.x;

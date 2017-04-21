@@ -76,6 +76,6 @@ export class Enemy extends Entity {
 	update() : void {
 		this.moveTowards(this.target.body.position);
 
-        //console.log("Enemy speed: " + this.body.speed);
+        //console.log('Enemy speed: ' + this.body.speed);
 	}
 }

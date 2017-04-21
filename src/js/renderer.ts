@@ -38,7 +38,7 @@ export class Renderer {
     }
 
     private renderTiles() : void {
-        let colors = ["#785c98", "#694f88"];
+        let colors = ['#785c98', '#694f88'];
 
         for (let x = 0; x < this._game.map.width; x += this._tile.width) {
             for (let y = 0; y < this._game.map.height; y += this._tile.height) {
@@ -98,10 +98,10 @@ export class Renderer {
 		);
 
 		var grd = ctx.createLinearGradient(pos.x, pos.y, pos.x + barSize.width, pos.y + barSize.height);
-		grd.addColorStop(0, "red");
-		grd.addColorStop(e.health / 100, "red");
-		grd.addColorStop(e.health / 100, "black");
-		grd.addColorStop(1, "black");
+		grd.addColorStop(0, 'red');
+		grd.addColorStop(e.health / 100, 'red');
+		grd.addColorStop(e.health / 100, 'black');
+		grd.addColorStop(1, 'black');
 
 		ctx.fillStyle = grd;
 		ctx.fill();
@@ -124,19 +124,19 @@ export class Renderer {
 
 
 		var grd = ctx.createLinearGradient(offset, this._game.canvas.height - offset, offset + barSize.width, this._game.canvas.height - offset + barSize.height);
-		grd.addColorStop(0, "#4caf50");
-		grd.addColorStop(this._game.player.health / 100, "#4caf50");
-		grd.addColorStop(this._game.player.health / 100, "black");
-		grd.addColorStop(1, "black");
+		grd.addColorStop(0, '#4caf50');
+		grd.addColorStop(this._game.player.health / 100, '#4caf50');
+		grd.addColorStop(this._game.player.health / 100, 'black');
+		grd.addColorStop(1, 'black');
 
 		ctx.fillStyle = grd;
-		ctx.strokeStyle = "#182524";
+		ctx.strokeStyle = '#182524';
 		ctx.lineWidth = 1;
 		ctx.fill();
 		ctx.stroke();
 
 		ctx.font = '20px Consolas';
-  		ctx.fillStyle = "#f6e855";
+  		ctx.fillStyle = '#f6e855';
 		ctx.fillText(this._game.score.toString(), offset, this._game.canvas.height - offset * 1.5);
 		
 	}
@@ -153,7 +153,7 @@ export class Renderer {
 			body.height
 		);
 
-		ctx.strokeStyle = "red";
+		ctx.strokeStyle = 'red';
 		ctx.lineWidth = 1;
 		ctx.stroke();
 		ctx.translate(-0.5, -0.5);

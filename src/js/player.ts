@@ -77,7 +77,7 @@ export class Player extends Entity {
 		this.body.velocity.x = direction.x * speed;
 		this.body.velocity.y = direction.y * speed;
 
-		console.log("Player speed: " + this.body.speed);
+		console.log('Player speed: ' + this.body.speed);
 
 		this.body.update();
 
