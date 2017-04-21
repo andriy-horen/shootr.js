@@ -52,7 +52,7 @@ export class Game {
 		this.renderer = new Renderer(this);
 		this.updater = new Updater(this);
 		this.collisions = new CollisionManager(this);
-		this.enemies.push(new Enemy(this.player));
+		this.enemies.push(new Enemy(this, this.player));
 		this.walls.push(new Wall({ x: 350, y: 20 }));
 	}
 

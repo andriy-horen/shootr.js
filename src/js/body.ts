@@ -3,10 +3,6 @@ import { World } from './world';
 import { Point, Vector } from './primitives';
 import { noop } from './util';
 
-export interface OnCollide {
-	(obj: Entity | World) : void;
-}
-
 export class Body {
 	position: Vector = new Vector();
 	velocity: Vector = new Vector();
@@ -14,9 +10,6 @@ export class Body {
 	speed : number;
 	width : number;
 	height : number;
-
-	onCollide: OnCollide;
-	collideWorldBounds: boolean = true;
 
 	constructor(position: Vector, width: number, height: number) {
 		this.position = position;

@@ -17,6 +17,10 @@ export class CollisionManager {
 					bullet.kill();
 				});
 			});
+
+			Physics.collide(enemy.body, this._game.player.body, () => {
+				enemy.hit(this._game.player);
+			});
 		});
 
 		this._game.walls.forEach(w => {

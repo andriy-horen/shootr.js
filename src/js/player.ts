@@ -93,7 +93,9 @@ export class Player extends Entity {
 	}
 
 	update() : void {
-		this.upateMovement();
-		this.updateAnimation();
+		if (this.alive) {
+			this.upateMovement();
+			this.updateAnimation();
+		}
 	}
 }

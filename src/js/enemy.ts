@@ -1,3 +1,4 @@
+import { Game } from './game';
 import { Entity } from './entity';
 import { GenericMap as Map } from './collections';
 import { Point, Vector } from './primitives';
@@ -13,15 +14,21 @@ export class Enemy extends Entity {
 			'right' : new Animation(4, 0, Frame.create(0, 0, 36, 36)),
 			'left' : new Animation(4, 1, Frame.create(0, 0, 36, 36))
     };
+    private _lastHit: Date = new Date(0);
+    private _game: Game;
+
 
     public currentAnimation : Animation;
     public speed : number = 3;
+    public dagameAmount: number = 5;
+    public attackSpeed: number = 250;
     public target : Entity;
     public body : Body = new Body(new Vector(100, 100), 36, 36);
 
-	constructor(target: Entity) {
+	constructor(gameInstance: Game, target: Entity) {
 		super();
 
+        this._game = gameInstance;
         this.target = target;
 
 		this.animate('right');
@@ -51,6 +58,20 @@ export class Enemy extends Entity {
 
         this.body.update();
 	}
+
+    private canHit(): boolean {
+        let diff = this._game.gameTime.getTime() - this._lastHit.getTime();
+
+		return diff > this.attackSpeed;
+    }
+
+    hit(target: Entity): void {
+        if (this.canHit()) {
+            target.damage(this.dagameAmount, this);
+
+            this._lastHit = new Date();
+        }
+    }
 
 	update() : void {
 		this.moveTowards(this.target.body.position);

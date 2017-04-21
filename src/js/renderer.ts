@@ -107,6 +107,35 @@ export class Renderer {
 		ctx.fill();
 	}
 
+	// todo: extract hp-bar rendering logic
+	private renderHud(): void {
+		let offset = 20;
+
+		let barSize = { width: 150, height: 10 };
+		let ctx = this._game.context;
+
+		ctx.beginPath();
+		ctx.rect(
+			offset,
+			this._game.canvas.height - offset * 1.2,
+			barSize.width,
+			barSize.height
+		);
+
+
+		var grd = ctx.createLinearGradient(offset, this._game.canvas.height - offset, offset + barSize.width, this._game.canvas.height - offset + barSize.height);
+		grd.addColorStop(0, "#4caf50");
+		grd.addColorStop(this._game.player.health / 100, "#4caf50");
+		grd.addColorStop(this._game.player.health / 100, "black");
+		grd.addColorStop(1, "black");
+
+		ctx.fillStyle = grd;
+		ctx.strokeStyle = "#182524";
+		ctx.lineWidth = 1;
+		ctx.fill();
+		ctx.stroke();
+	}
+
 	private renderAABB(body: Body) {
 		let ctx = this._game.context;
 
@@ -137,6 +166,7 @@ export class Renderer {
 
 		this.renderHelper(this._resources['player'], [this._game.player]);
 		this.renderHelper(this._resources['wall'], this._game.walls);
+		this.renderHud();
 	}
 
 	clear() : void {
