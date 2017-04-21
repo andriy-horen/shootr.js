@@ -134,6 +134,11 @@ export class Renderer {
 		ctx.lineWidth = 1;
 		ctx.fill();
 		ctx.stroke();
+
+		ctx.font = '20px Consolas';
+  		ctx.fillStyle = "#f6e855";
+		ctx.fillText(this._game.score.toString(), offset, this._game.canvas.height - offset * 1.5);
+		
 	}
 
 	private renderAABB(body: Body) {

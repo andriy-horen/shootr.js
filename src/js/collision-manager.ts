@@ -15,6 +15,8 @@ export class CollisionManager {
 					enemy.damage(bullet.damageAmount, bullet.parent);
 
 					bullet.kill();
+
+					this._game.score += 10;
 				});
 			});
 

@@ -26,6 +26,7 @@ export class Game {
 	public walls: Wall[] = [];
 
 	public gameTime: Date;
+	public score: number = 0;
 
 	public map: Map;
 	public input: Input;
