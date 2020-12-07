@@ -2,35 +2,45 @@ import { Game } from './game';
 import { Entity } from './entity';
 
 export class Updater {
-	private _game : Game;
+	private _game: Game;
 
-	constructor(gameInstance : Game) {
+	constructor(gameInstance: Game) {
 		this._game = gameInstance;
 	}
 
-	private allEntities() : Entity[] {
-		return <Entity[]> Array.prototype.concat(
-			this._game.bullets,
-			this._game.enemies,
-			this._game.player
+	private allEntities(): Entity[] {
+		return <Entity[]>(
+			Array.prototype.concat(
+				this._game.bullets,
+				this._game.enemies,
+				this._game.player
+			)
 		);
 	}
 
-	private updateAnimations() : void {
+	private updateAnimations(): void {
 		let entities = this.allEntities();
 
-		entities.forEach((e)=> { e.currentAnimation.update(this._game.gameTime); });
+		entities.forEach((e) => {
+			e.currentAnimation.update(this._game.gameTime);
+		});
 	}
 
-	private updateEntities() : void {
+	private updateEntities(): void {
 		let entities = this.allEntities();
 
-		entities.forEach(e => { e.update(); });
+		entities.forEach((e) => {
+			e.update();
+		});
 	}
 
-	private updateDead() : void {
-		this._game.bullets.forEach(e => { this.removeDead(e, this._game.bullets); })
-		this._game.enemies.forEach(e => { this.removeDead(e, this._game.enemies); })
+	private updateDead(): void {
+		this._game.bullets.forEach((e) => {
+			this.removeDead(e, this._game.bullets);
+		});
+		this._game.enemies.forEach((e) => {
+			this.removeDead(e, this._game.enemies);
+		});
 	}
 
 	private removeDead(e: Entity, collection: Entity[]) {
@@ -43,7 +53,7 @@ export class Updater {
 		}
 	}
 
-	update() : void {
+	update(): void {
 		this.updateAnimations();
 		this.updateEntities();
 		this.updateDead();

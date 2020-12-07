@@ -2,18 +2,18 @@ import { Body } from './body';
 import { Animation } from './animation';
 
 export abstract class Entity {
-	private _health : number = 100;
-	private _alive : boolean = true;
-	private _attacker : Entity;
+	private _health: number = 100;
+	private _alive: boolean = true;
+	private _attacker: Entity;
 
-	public body : Body;
-	public currentAnimation : Animation;
+	public body: Body;
+	public currentAnimation: Animation;
 
-	get health() : number {
+	get health(): number {
 		return this._health;
 	}
 
-	get alive() : boolean {
+	get alive(): boolean {
 		return this._alive;
 	}
 
@@ -32,13 +32,13 @@ export abstract class Entity {
 		this._alive = false;
 	}
 
-	damage(amount : number, attacker: Entity) : void {
+	damage(amount: number, attacker: Entity): void {
 		this._setHealth(-amount);
 
 		this._attacker = attacker;
 	}
 
-	heal(amount : number) {
+	heal(amount: number) {
 		this._setHealth(amount);
 	}
 

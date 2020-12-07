@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"target": "es2015",
+		"strict": true,
+		"sourceMap": true
+	},
+	"include": ["./server.ts"],
+	"exclude": ["node_modules"]
+}

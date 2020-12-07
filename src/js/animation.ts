@@ -2,23 +2,23 @@ import { Frame } from './frame';
 import * as Const from './const';
 
 export class Animation {
-	public currentFrame : Frame;
+	public currentFrame: Frame;
 
 	/**
 	 * Number of frames per second
 	 * @type {number}
 	 */
-	public speed : number = 0;
+	public speed: number = 0;
 	/**
-	 * TODO: Implement, field is not used 
+	 * TODO: Implement, field is not used
 	 * Set to true to make animation looped, false - for one cycle only
 	 * @type {boolean}
 	 */
 	public loop: boolean = true;
 
-	private _lastAnimated : Date = new Date(0);
-	private _row : number;
-	private _length : number;
+	private _lastAnimated: Date = new Date(0);
+	private _row: number;
+	private _length: number;
 
 	constructor(length: number, row: number, frame: Frame) {
 		this._row = row;
@@ -28,7 +28,7 @@ export class Animation {
 		this.currentFrame.y = this._row * this.currentFrame.height;
 	}
 
-	canAnimate(time : Date) : boolean {
+	canAnimate(time: Date): boolean {
 		let animationDelta = time.getTime() - this._lastAnimated.getTime();
 
 		return animationDelta > this.delay;

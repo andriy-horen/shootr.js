@@ -1,25 +1,33 @@
 {
-  "name": "shootr.js",
-  "version": "1.0.0",
-  "description": "Shooter game",
-  "main": "index.js",
-  "scripts": {
-    "test": "test",
-    "start": "node server.js"
-  },
-  "keywords": [
-    "html5",
-    "game"
-  ],
-  "author": "me",
-  "license": "MIT",
-  "devDependencies": {
-    "browserify": "^13.0.1",
-    "del": "^2.2.1",
-    "express": "^4.14.0",
-    "gulp": "^3.9.1",
-    "tsify": "^1.0.1",
-    "typescript": "^1.8.10",
-    "vinyl-source-stream": "^1.1.0"
-  }
+	"name": "shootr.js",
+	"version": "1.0.0",
+	"description": "Shooter game",
+	"main": "index.js",
+	"scripts": {
+		"server": "ts-node server.ts",
+		"dev": "gulp watch",
+		"build": "gulp"
+	},
+	"keywords": [
+		"html5",
+		"game"
+	],
+	"author": "me",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/browserify": "^12.0.36",
+		"@types/express": "^4.17.9",
+		"@types/gulp": "^4.0.7",
+		"@types/node": "^14.14.10",
+		"@types/vinyl-source-stream": "0.0.30",
+		"browserify": "^17.0.0",
+		"del": "^6.0.0",
+		"express": "^4.17.1",
+		"gulp": "^4.0.2",
+		"ts-node": "^9.1.1",
+		"tsify": "^5.0.2",
+		"typescript": "^4.1.2",
+		"vinyl-source-stream": "^2.0.0"
+	},
+	"dependencies": {}
 }

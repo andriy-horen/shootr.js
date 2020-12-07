@@ -7,18 +7,18 @@ import { Map } from './map';
 import { Player } from './player';
 import { Point } from './primitives';
 import { Renderer } from './renderer';
-import { Updater } from './updater'; 
+import { Updater } from './updater';
 import { Viewport } from './viewport';
 
 export interface Config {
-	container : string;
-	showAABB : boolean;
+	container: string;
+	showAABB: boolean;
 }
 
 export class Game {
-	public config : Config;
-	public canvas : HTMLCanvasElement;
-	public context : CanvasRenderingContext2D;
+	public config: Config;
+	public canvas: HTMLCanvasElement;
+	public context: CanvasRenderingContext2D;
 	public isRunning = false;
 	public player: Player;
 	public bullets: Bullet[] = [];
@@ -39,11 +39,13 @@ export class Game {
 	 * RequestAnimationFrame unique ID; used to cancel RAF-loop
 	 * @type {number}
 	 */
-	private _rafId : number;
+	private _rafId: number;
 
 	constructor(config: Config) {
 		this.config = config;
-		this.canvas = <HTMLCanvasElement> document.querySelector(config.container);
+		this.canvas = <HTMLCanvasElement>(
+			document.querySelector(config.container)
+		);
 		this.context = this.canvas.getContext('2d');
 
 		this.player = new Player(this);
@@ -53,12 +55,14 @@ export class Game {
 		this.renderer = new Renderer(this);
 		this.updater = new Updater(this);
 		this.collisions = new CollisionManager(this);
-		for(let i = 0; i < 10; i++) { this.enemies.push(new Enemy(this, this.player)); }
+		for (let i = 0; i < 10; i++) {
+			this.enemies.push(new Enemy(this, this.player));
+		}
 
 		this.walls.push(new Wall({ x: 350, y: 20 }));
 	}
 
-	tick() : void {
+	tick(): void {
 		this.gameTime = new Date();
 
 		if (this.isRunning) {
@@ -69,7 +73,7 @@ export class Game {
 		this._rafId = requestAnimationFrame(this.tick.bind(this));
 	}
 
-	run() : void {
+	run(): void {
 		if (this.isRunning === false) {
 			this.tick();
 
@@ -77,7 +81,7 @@ export class Game {
 		}
 	}
 
-	stop() : void {
+	stop(): void {
 		if (this.isRunning) {
 			cancelAnimationFrame(this._rafId);
 
@@ -88,7 +92,7 @@ export class Game {
 
 let game = new Game({
 	container: '.game',
-	showAABB: false
+	showAABB: false,
 });
 
 game.run();

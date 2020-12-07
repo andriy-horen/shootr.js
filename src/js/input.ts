@@ -1,13 +1,12 @@
 import { Game } from './game';
 import { Point } from './primitives';
-import { GenericMap as Map } from './collections';
 
-export enum Action { 
-	Up, 
+export enum Action {
+	Up,
 	Down,
 	Left,
 	Right,
-	Attack
+	Attack,
 }
 
 enum Key {
@@ -18,31 +17,40 @@ enum Key {
 	Up = 38,
 	Down = 40,
 	Left = 37,
-	Right = 39
+	Right = 39,
 }
 
 export class Input {
-	private _bindings : Map<Action> = {
-		[Key.W] : Action.Up,
-		[Key.A] : Action.Left,
-		[Key.S] : Action.Down,
-		[Key.D] : Action.Right,
-		[Key.Up] : Action.Up,
-		[Key.Down] : Action.Down,
-		[Key.Left] : Action.Left,
-		[Key.Right] : Action.Right
+	private _bindings: { [key: string]: Action } = {
+		[Key.W]: Action.Up,
+		[Key.A]: Action.Left,
+		[Key.S]: Action.Down,
+		[Key.D]: Action.Right,
+		[Key.Up]: Action.Up,
+		[Key.Down]: Action.Down,
+		[Key.Left]: Action.Left,
+		[Key.Right]: Action.Right,
 	};
 
-	public actions : Map<boolean> = {};
-	private _game : Game;
+	public actions: { [key: string]: boolean } = {};
+	private _game: Game;
 	private _mousePos: Point = { x: 0, y: 0 };
 
-	constructor(gameInstance : Game) {
+	constructor(gameInstance: Game) {
 		this._game = gameInstance;
 
-		this._game.canvas.addEventListener('mousedown', this.onMouseDown.bind(this));
-		this._game.canvas.addEventListener('mouseup', this.onMouseUp.bind(this));
-		this._game.canvas.addEventListener('mousemove', this.getMousePosition.bind(this));
+		this._game.canvas.addEventListener(
+			'mousedown',
+			this.onMouseDown.bind(this)
+		);
+		this._game.canvas.addEventListener(
+			'mouseup',
+			this.onMouseUp.bind(this)
+		);
+		this._game.canvas.addEventListener(
+			'mousemove',
+			this.getMousePosition.bind(this)
+		);
 
 		document.addEventListener('keydown', this.onKeyDown.bind(this));
 		document.addEventListener('keyup', this.onKeyUp.bind(this));
@@ -60,7 +68,7 @@ export class Input {
 		}
 	}
 
-	private onKeyDown(e: KeyboardEvent) { 
+	private onKeyDown(e: KeyboardEvent) {
 		let action = this._bindings[e.which];
 
 		if (action != null) {
@@ -102,24 +110,24 @@ export class Input {
 	}
 
 	// TODO : Needs better implementation
-	private getMousePosition(e: MouseEvent) { 
+	private getMousePosition(e: MouseEvent) {
 		let canvasOffset = this._game.canvas.getBoundingClientRect();
 
 		this._mousePos = {
-	      x: e.clientX - canvasOffset.left,
-	      y: e.clientY - canvasOffset.top
-	    };
+			x: e.clientX - canvasOffset.left,
+			y: e.clientY - canvasOffset.top,
+		};
 
-	   	this._game.mouse = {
+		this._game.mouse = {
 			x: this._mousePos.x + this._game.viewport.position.x,
-			y: this._mousePos.y + this._game.viewport.position.y
-		}
+			y: this._mousePos.y + this._game.viewport.position.y,
+		};
 	}
 
 	public update() {
 		this._game.mouse = {
 			x: this._mousePos.x + this._game.viewport.position.x,
-			y: this._mousePos.y + this._game.viewport.position.y
-		}
+			y: this._mousePos.y + this._game.viewport.position.y,
+		};
 	}
 }

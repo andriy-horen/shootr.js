@@ -1,10 +1,9 @@
 export interface Point {
-	x : number;
-	y : number;
+	x: number;
+	y: number;
 }
 
-
-export interface Rect { 
+export interface Rect {
 	x: number;
 	y: number;
 	width: number;
@@ -12,8 +11,8 @@ export interface Rect {
 }
 
 export class Vector {
-	x : number = 0;
-	y : number = 0;
+	x: number = 0;
+	y: number = 0;
 
 	constructor(x: number = 0, y: number = 0) {
 		this.x = x;

@@ -1,7 +1,7 @@
 import { Game } from './game';
 import { Point, Rect } from './primitives';
 
-export class World { 
+export class World {
 	private _game: Game;
 
 	public bounds: Rect;
